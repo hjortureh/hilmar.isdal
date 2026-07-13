@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <a class="brand" href="index.html">Hilmar Isdal</a>
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="Hilmar Isdal" width="1137" height="516"></a>
   </header>
 
   <main>
@@ -47,9 +47,10 @@
             '<label>Why do you want this?' +
               '<textarea name="why" required></textarea>' +
             '</label>' +
-            '<button type="submit">Send Enquiry</button>' +
+            '<button type="submit" id="enquiry-send">Send Enquiry</button>' +
           '</form>' +
-          '<p class="sent" id="sent">Thank you — your email app has opened with the enquiry. Just press send.</p>' +
+          '<p class="sent" id="sent">Thank you — your enquiry has been sent.</p>' +
+          '<p class="sent" id="send-error">Something went wrong — please email <a href="mailto:' + ENQUIRY_EMAIL + '">' + ENQUIRY_EMAIL + '</a> directly.</p>' +
         '</section>' +
         '<a class="back-link" href="index.html">&larr; All works</a>' +
       '</div>';
@@ -57,17 +58,45 @@
     document.getElementById("enquiry-form").addEventListener("submit", function (e) {
       e.preventDefault();
       var f = e.target;
-      var subject = "Enquiry: " + work.title + " (" + work.year + ")";
-      var body =
-        "Piece: " + work.title + ", " + work.year + " — " + work.medium + "\n\n" +
-        "Name: " + f.name.value + "\n" +
-        "Email: " + f.email.value + "\n\n" +
-        "Why do you want this?\n" + f.why.value + "\n";
-      location.href =
-        "mailto:" + ENQUIRY_EMAIL +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
-      document.getElementById("sent").style.display = "block";
+      var button = document.getElementById("enquiry-send");
+      var sent = document.getElementById("sent");
+      var error = document.getElementById("send-error");
+
+      button.disabled = true;
+      button.textContent = "Sending…";
+      sent.style.display = "none";
+      error.style.display = "none";
+
+      fetch("https://formsubmit.co/ajax/" + ENQUIRY_EMAIL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          _subject: "Enquiry: " + work.title + " (" + work.year + ")",
+          _template: "table",
+          _captcha: "false",
+          piece: work.title + ", " + work.year + " — " + work.medium,
+          name: f.name.value,
+          email: f.email.value,
+          why: f.why.value
+        })
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("send failed");
+          return res.json();
+        })
+        .then(function (data) {
+          if (String(data.success) !== "true") throw new Error("send failed");
+          f.reset();
+          f.style.display = "none";
+          sent.style.display = "block";
+        })
+        .catch(function () {
+          error.style.display = "block";
+        })
+        .finally(function () {
+          button.disabled = false;
+          button.textContent = "Send Enquiry";
+        });
     });
   </script>
 </body>

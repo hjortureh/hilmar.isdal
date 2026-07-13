@@ -60,6 +60,18 @@ const WORKS = [
       "A pale pink figure against a dripping yellow field, marked with crosses and stitches. Quiet, a little bruised, still standing.",
   },
   {
+    id: "ida",
+    title: "Ida?",
+    year: "2026",
+    medium: "Watercolour and ink on canvas",
+    size: "60 × 60 cm",
+    image: "assets/ida.jpg",
+    w: 686,
+    h: 705,
+    description:
+      "A grey figure stands in a garden of red flowers, asking one question in a black speech bubble: IDA? Signed HILMAR in the corner.",
+  },
+  {
     id: "dragon-and-friends",
     title: "Dragon & Friends",
     year: "2026",
@@ -83,18 +95,4 @@ const WORKS = [
     description:
       "The same grin painted three ways: one in colour, one in black and white, one behind bars of blue and yellow. Sold together, smiled at separately.",
   },
-  // 8th piece — the green painting with the "IDA?" speech bubble.
-  // Save the image as assets/ida.jpg, then uncomment:
-  // {
-  //   id: "ida",
-  //   title: "Ida?",
-  //   year: "2026",
-  //   medium: "Watercolour and ink on canvas",
-  //   size: "60 × 60 cm",
-  //   image: "assets/ida.jpg",
-  //   w: 1200,
-  //   h: 1200,
-  //   description:
-  //     "A grey figure stands in a garden of red flowers, asking one question in a black speech bubble: IDA? Signed HILMAR in the corner.",
-  // },
 ];
