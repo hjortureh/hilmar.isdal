@@ -1,0 +1,289 @@
+:root {
+  --fg: #111;
+  --muted: #888;
+  --bg: #fff;
+  --line: #e5e5e5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- header ---------- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 28px 24px;
+  text-transform: uppercase;
+}
+
+header .brand {
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+main {
+  padding: 0 24px 120px;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.page-title {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  margin: 48px 0 64px;
+  letter-spacing: 0.25em;
+}
+
+/* ---------- works grid ---------- */
+
+.works {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+  row-gap: 96px;
+  list-style: none;
+}
+
+.works li a {
+  display: block;
+}
+
+.works figure img {
+  width: 100%;
+  height: auto;
+}
+
+.works figcaption {
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+.works figcaption .meta {
+  color: var(--muted);
+}
+
+.works li:hover img {
+  opacity: 0.92;
+}
+
+/* uneven placement on desktop */
+@media (min-width: 900px) {
+  .works li:nth-child(1) { grid-column: 1 / span 6; }
+  .works li:nth-child(2) { grid-column: 9 / span 4; margin-top: 160px; }
+  .works li:nth-child(3) { grid-column: 3 / span 4; margin-top: -40px; }
+  .works li:nth-child(4) { grid-column: 8 / span 5; margin-top: 120px; }
+  .works li:nth-child(5) { grid-column: 2 / span 4; margin-top: 40px; }
+  .works li:nth-child(6) { grid-column: 7 / span 6; margin-top: 200px; }
+}
+
+@media (max-width: 899px) {
+  .works li { grid-column: 1 / -1; }
+  .works { row-gap: 64px; }
+}
+
+/* ---------- piece detail ---------- */
+
+.piece {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  margin-top: 48px;
+}
+
+@media (min-width: 900px) {
+  .piece {
+    grid-template-columns: 7fr 4fr;
+    gap: 72px;
+    align-items: start;
+  }
+}
+
+.piece-info h1 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.piece-info .meta {
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.piece-info .description {
+  margin-top: 32px;
+  max-width: 42ch;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 48px;
+}
+
+.back-link:hover {
+  color: var(--fg);
+}
+
+/* ---------- enquiry form ---------- */
+
+.enquiry {
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+}
+
+.enquiry h2 {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.25em;
+}
+
+.enquiry form {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.enquiry label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.enquiry input,
+.enquiry textarea {
+  font: inherit;
+  color: var(--fg);
+  letter-spacing: inherit;
+  border: none;
+  border-bottom: 1px solid var(--fg);
+  border-radius: 0;
+  background: transparent;
+  padding: 6px 0;
+  outline: none;
+}
+
+.enquiry textarea {
+  min-height: 96px;
+  resize: vertical;
+  border: 1px solid var(--fg);
+  padding: 10px;
+}
+
+.enquiry input:focus,
+.enquiry textarea:focus {
+  border-color: var(--fg);
+}
+
+.enquiry button {
+  font: inherit;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  background: var(--fg);
+  color: var(--bg);
+  border: 1px solid var(--fg);
+  padding: 14px 0;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.enquiry button:hover {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.enquiry .sent {
+  display: none;
+  margin-top: 16px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- about ---------- */
+
+.about {
+  margin-top: 48px;
+  max-width: 640px;
+}
+
+.about p {
+  margin-bottom: 24px;
+  max-width: 56ch;
+}
+
+.about .ig {
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--fg);
+}
+
+.video {
+  margin-top: 64px;
+  max-width: 880px;
+}
+
+.video .frame {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ---------- footer ---------- */
+
+footer {
+  padding: 48px 24px;
+  color: var(--muted);
+  text-transform: uppercase;
+  text-align: center;
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hilmar Isdal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html">Hilmar Isdal</a>
+  </header>
+
+  <main>
+    <div class="piece" id="piece"></div>
+  </main>
+
+  <footer>&copy; 2026 Hilmar Isdal</footer>
+
+  <script src="js/works.js"></script>
+  <script>
+    var ENQUIRY_EMAIL = "hilmarsnaer05@gmail.com";
+
+    var id = new URLSearchParams(location.search).get("id");
+    var work = WORKS.find(function (w) { return w.id === id; }) || WORKS[0];
+
+    document.title = work.title + " — Hilmar Isdal";
+
+    document.getElementById("piece").innerHTML =
+      '<figure class="piece-image">' +
+        '<img src="' + work.image + '" width="' + work.w + '" height="' + work.h + '" alt="' + work.title + ' — ' + work.medium + '">' +
+      '</figure>' +
+      '<div class="piece-info">' +
+        '<h1>' + work.title + '</h1>' +
+        '<div class="meta">' + work.year + ' — ' + work.medium + '</div>' +
+        '<div class="meta">' + work.size + '</div>' +
+        '<p class="description">' + work.description + '</p>' +
+        '<section class="enquiry">' +
+          '<h2>Enquire about this piece</h2>' +
+          '<form id="enquiry-form">' +
+            '<label>Name' +
+              '<input type="text" name="name" required autocomplete="name">' +
+            '</label>' +
+            '<label>Email' +
+              '<input type="email" name="email" required autocomplete="email">' +
+            '</label>' +
+            '<label>Why do you want this?' +
+              '<textarea name="why" required></textarea>' +
+            '</label>' +
+            '<button type="submit">Send Enquiry</button>' +
+          '</form>' +
+          '<p class="sent" id="sent">Thank you — your email app has opened with the enquiry. Just press send.</p>' +
+        '</section>' +
+        '<a class="back-link" href="index.html">&larr; All works</a>' +
+      '</div>';
+
+    document.getElementById("enquiry-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = e.target;
+      var subject = "Enquiry: " + work.title + " (" + work.year + ")";
+      var body =
+        "Piece: " + work.title + ", " + work.year + " — " + work.medium + "\n\n" +
+        "Name: " + f.name.value + "\n" +
+        "Email: " + f.email.value + "\n\n" +
+        "Why do you want this?\n" + f.why.value + "\n";
+      location.href =
+        "mailto:" + ENQUIRY_EMAIL +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+      document.getElementById("sent").style.display = "block";
+    });
+  </script>
+</body>
+</html>
