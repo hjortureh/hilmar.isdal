@@ -13,7 +13,6 @@ document.getElementById("piece").innerHTML =
     '<h1>' + work.title + '</h1>' +
     '<div class="meta">' + work.year + ' — ' + work.medium + '</div>' +
     '<div class="meta">' + work.size + '</div>' +
-    '<p class="description">' + work.description + '</p>' +
     '<section class="enquiry">' +
       '<h2>Enquire about this piece</h2>' +
       '<form id="enquiry-form">' +

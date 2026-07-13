@@ -27,9 +27,9 @@ const page = (w) => `<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(w.title)} — Hilmar Isdal</title>
-  <meta name="description" content="${esc(w.description)}">
+  <meta name="description" content="${esc(`${w.medium}, ${w.size}`)}">
   <meta property="og:title" content="${esc(w.title)} — Hilmar Isdal">
-  <meta property="og:description" content="${esc(w.description)}">
+  <meta property="og:description" content="${esc(`${w.medium}, ${w.size}`)}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${SITE}/pieces/${w.id}.html">
   <meta property="og:image" content="${SITE}/${w.image}">
