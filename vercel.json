@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    { "source": "/pieces/everyone-is-here.html", "destination": "/pieces/emo-candy.html", "permanent": true },
+    { "source": "/pieces/what-matters.html", "destination": "/pieces/recorded-patterns-of-thought.html", "permanent": true },
+    { "source": "/pieces/xoxo.html", "destination": "/pieces/untitled-series-1.html", "permanent": true },
+    { "source": "/pieces/ida.html", "destination": "/pieces/untitled-series-2.html", "permanent": true },
+    { "source": "/pieces/dragon-and-friends.html", "destination": "/pieces/bolibompa.html", "permanent": true },
+    { "source": "/pieces/three-smiles.html", "destination": "/pieces/smiley-kissy-silly.html", "permanent": true }
+  ]
+}
