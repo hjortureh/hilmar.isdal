@@ -32,7 +32,7 @@
     document.getElementById("works").innerHTML = WORKS.map(function (w) {
       return (
         '<li>' +
-          '<a href="piece.html?id=' + w.id + '">' +
+          '<a href="pieces/' + w.id + '.html">' +
             '<figure>' +
               '<img src="' + w.image + '" width="' + w.w + '" height="' + w.h + '" alt="' + w.title + ' — ' + w.medium + '" loading="lazy">' +
             '</figure>' +
